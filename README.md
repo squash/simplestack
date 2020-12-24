@@ -1,7 +1,6 @@
 package simplestack // import "github.com/squash/simplestack"
 
-Package simplestack implements a naive stack container that is thread safe
-and should be fine for many projects
+git
 
 TYPES
 

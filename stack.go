@@ -54,6 +54,9 @@ func (s *Stack) Pop() (interface{}, bool) {
 
 // Dump retrieves the entire stack's contents
 func (s *Stack) Dump() []interface{} {
+	if len(s.entries)==0 {
+		return nil
+	}
 	var tmp []interface{}
 	s.lock.Lock()
 	for x := range s.entries {
