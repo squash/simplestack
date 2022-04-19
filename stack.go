@@ -82,3 +82,10 @@ func (s *Stack) Count() int {
 	s.lock.Unlock()
 	return tmp
 }
+
+// VisitAll will call your function for each entry in the stack without modifying the stack
+func (s *Stack) VisitAll(f func (interface{})) {
+	for x:=range(s.entries) {
+		f(s.entries[x].value)
+	}
+}
