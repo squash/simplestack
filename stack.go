@@ -59,7 +59,7 @@ func (s *Stack) Bottom() (interface{}, bool) {
 	s.lock.Lock()
 	if len(s.entries) > 0 {
 		tmp = s.entries[len(s.entries)-1].value
-		s.entries = s.entries[0:len(s.entries)-2]
+		s.entries = s.entries[:len(s.entries)-1]
 		ok = true
 	}
 	s.lock.Unlock()
