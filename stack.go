@@ -52,6 +52,20 @@ func (s *Stack) Pop() (interface{}, bool) {
 	return tmp, ok
 }
 
+// Bottom grabs the olodest entry off the stack
+func (s *Stack) Bottom() (interface{}, bool) {
+	ok := false
+	var tmp interface{}
+	s.lock.Lock()
+	if len(s.entries) > 0 {
+		tmp = s.entries[len(s.entries)-1].value
+		s.entries = s.entries[0:len(s.entries)-2]
+		ok = true
+	}
+	s.lock.Unlock()
+	return tmp, ok
+}
+
 // Dump retrieves the entire stack's contents
 func (s *Stack) Dump() []interface{} {
 	s.lock.Lock()
